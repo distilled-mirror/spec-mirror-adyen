@@ -27,7 +27,7 @@
         
         
         
-        <script nonce="e850fa3bb40a269d54a5ff6bdffc08e7">
+        <script nonce="ee180c8bf8ff88d55be7e29bf454e933">
                             // Define dataLayer and the gtag function.
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
@@ -42,7 +42,7 @@
                 });
                     </script>
                                     <!-- Google Tag Manager -->
-                <script nonce="e850fa3bb40a269d54a5ff6bdffc08e7">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                <script nonce="ee180c8bf8ff88d55be7e29bf454e933">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=afdbAXrh3-yNk9m3Wq79uw&gtm_preview=env-1&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
@@ -50,13 +50,13 @@
                 <!-- End Google Tag Manager -->
                     
                 <!-- OneTrust Cookies Consent Notice start for adyen.com -->
-    <script nonce="e850fa3bb40a269d54a5ff6bdffc08e7" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="0192d86c-04a9-7967-9a48-20d2b66f78e8"></script>
-    <script nonce="e850fa3bb40a269d54a5ff6bdffc08e7" type="text/javascript">
+    <script nonce="ee180c8bf8ff88d55be7e29bf454e933" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="0192d86c-04a9-7967-9a48-20d2b66f78e8"></script>
+    <script nonce="ee180c8bf8ff88d55be7e29bf454e933" type="text/javascript">
         function OptanonWrapper() { }
     </script>
     <!-- OneTrust Cookies Consent Notice end for adyen.com -->
 
-                <script nonce="e850fa3bb40a269d54a5ff6bdffc08e7">
+                <script nonce="ee180c8bf8ff88d55be7e29bf454e933">
             if (typeof Object.assign != 'function') {
                 Object.assign = function(target) {
                     'use strict';
@@ -80,11 +80,11 @@
             }
         </script>
         
-                        <link href="/assets/12b3fd214817569fb3e4dca19fd89374.css" type="text/css" rel="stylesheet" integrity="sha256-/zE/+pYeER2WG+9dMLPwWXMg8nyOz9hvHJucr+zeZTo=">
+                        <link href="/assets/37a01d7a3cef66144ba3da7ee2e0a1f0.css" type="text/css" rel="stylesheet" integrity="sha256-/zE/+pYeER2WG+9dMLPwWXMg8nyOz9hvHJucr+zeZTo=">
 
 
-                                    <script nonce="e850fa3bb40a269d54a5ff6bdffc08e7" src="/assets/76daa5252a4a598e40782efa01e80efe.js" integrity="sha256-WlZMsVqgyTGb7ziPUtiFc79XXbfAJq4s1+L03PoO+5c="></script>
-<script nonce="e850fa3bb40a269d54a5ff6bdffc08e7">
+                                    <script nonce="ee180c8bf8ff88d55be7e29bf454e933" src="/assets/bc1d99d8ae93544c40a499ce4619690a.js" integrity="sha256-WlZMsVqgyTGb7ziPUtiFc79XXbfAJq4s1+L03PoO+5c="></script>
+<script nonce="ee180c8bf8ff88d55be7e29bf454e933">
 $(document).ready(function(){
     $('a[rel="lightbox"]').featherlight({
         openSpeed: 250,
@@ -233,10 +233,62 @@ $(document).ready(function(){
             top: 230px
         }
 
+        /* Compress the menu-item buttons so the row still fits on a single
+           line between the mobile breakpoint and 1300px. Only the dropdown
+           anchors are compressed; childless entries (header-navigation__
+           menu-anchor-link) keep their own base padding and are left as-is. */
+        @media screen and (max-width: 1300px) {
+            .header-navigation__menu-anchor:not(.header-navigation__menu-anchor-link) {
+                padding: 12px 25px 12px 12px !important;
+            }
+
+            .header-navigation__menu-icon {
+                right: 5px !important;
+            }
+        }
+
         /* change to mobile */
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 1180px) {
             #docs-header-navigation > header{
                 height: 65px;
+            }
+
+            /* Show the hamburger and hide the horizontal menu up to 1180px. */
+            .header-docs__menu-toggle {
+                display: block !important;
+            }
+
+            .header-docs__bottom {
+                display: none !important;
+            }
+        }
+
+        /* The header switches to its 65px mobile height at =<1180px, but the
+           content offsets only drop to their mobile values at =<1024px (and
+           the left sidebar reappears above 1119px). Re-apply the header-height
+           offsets across the whole 1025-1180px gap so nothing sits under a
+           phantom 122px header:
+             - main__wrapper / body / breadcrumb: visible across the range
+             - left sidebar: only visible in 1120-1180px */
+        @media screen and (min-width: 1025px) and (max-width: 1180px) {
+            /* homepage */
+            .main__wrapper {
+                padding-top: 65px !important;
+            }
+
+            /* content pages */
+            .body.body--fixed-header {
+                padding-top: 64px !important;
+            }
+
+            .breadcrumb__wrapper {
+                top: 65px !important;
+            }
+
+            /* left sidebar (shown 1120-1180px): drop its 122px header
+               clearance to the mobile 65px header height */
+            .sidebar_navigation__wrapper .sidebar_navigation.sidebar_navigation--sticky {
+                padding-top: 65px !important;
             }
         }
     </style>
@@ -2632,7 +2684,10 @@ $(document).ready(function(){
                                     
                                                                                                     
                                     
-                                                        
+            
+                                                    
+                
+            
                                     
             
         
@@ -3151,7 +3206,7 @@ $(document).ready(function(){
 
 </div>
 
-<script nonce="e850fa3bb40a269d54a5ff6bdffc08e7" type="text/javascript">
+<script nonce="ee180c8bf8ff88d55be7e29bf454e933" type="text/javascript">
     // get current page host
     var protocol = location.protocol;
     var slashes = protocol.concat("//");
@@ -3533,7 +3588,7 @@ $(document).ready(function(){
 
                         <div class="feedback-with-actions">
                                             <div class="feedback-component"></div>
-    <script nonce="e850fa3bb40a269d54a5ff6bdffc08e7" type="text/javascript">
+    <script nonce="ee180c8bf8ff88d55be7e29bf454e933" type="text/javascript">
         window.addEventListener('DOMContentLoaded', function () {
             new FeedbackComponent( '.feedback-component', {
                 location: 'header',
@@ -3571,7 +3626,7 @@ $(document).ready(function(){
             </div>
             
 </div>
-<script nonce="e850fa3bb40a269d54a5ff6bdffc08e7" type="text/javascript">
+<script nonce="ee180c8bf8ff88d55be7e29bf454e933" type="text/javascript">
     var breadcrumb = new Breadcrumb();
 
     $(document).ready( function()
@@ -3848,7 +3903,7 @@ https://balanceplatform-api-test.adyen.com/bcl/v1/balanceAccounts        // vers
                     </article>
 
                                                 <div class="feedback-component__footer"></div>
-    <script nonce="e850fa3bb40a269d54a5ff6bdffc08e7" type="text/javascript">
+    <script nonce="ee180c8bf8ff88d55be7e29bf454e933" type="text/javascript">
         window.addEventListener('DOMContentLoaded', function () {
             new FeedbackComponent( '.feedback-component__footer', {
                 location: 'footer',
@@ -3999,11 +4054,11 @@ https://balanceplatform-api-test.adyen.com/bcl/v1/balanceAccounts        // vers
 
         
                                                 
-    <script nonce="e850fa3bb40a269d54a5ff6bdffc08e7" src="/assets/a152e5fc00c4caaae2432f5536e45742.js" integrity="sha256-zti2XTd+ZxhmLL4REUY9XIDm6N8OzmyYRTBqRA8NfwQ="></script>
+    <script nonce="ee180c8bf8ff88d55be7e29bf454e933" src="/assets/1d7f9075a9d5576ec3c9ed950338d45f.js" integrity="sha256-zti2XTd+ZxhmLL4REUY9XIDm6N8OzmyYRTBqRA8NfwQ="></script>
 
 
     <div style="display:none">
     </div>
-<script nonce="e850fa3bb40a269d54a5ff6bdffc08e7">(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.nonce='e850fa3bb40a269d54a5ff6bdffc08e7';d.innerHTML="window.__CF$cv$params={r:'a3bc7ca85aaa57fc',t:'MTc4OTUyNjIyMg=='};var a=document.createElement('script');a.nonce='e850fa3bb40a269d54a5ff6bdffc08e7';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" nonce="e850fa3bb40a269d54a5ff6bdffc08e7" data-cf-beacon='{"version":"2024.11.0","token":"c2dd305d1d4e46898c66842001321fff","spa":2}' crossorigin="anonymous"></script>
-</body>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" nonce="ee180c8bf8ff88d55be7e29bf454e933" data-cf-beacon='{"version":"2024.11.0","token":"c2dd305d1d4e46898c66842001321fff","spa":2}' crossorigin="anonymous"></script>
+<script nonce="ee180c8bf8ff88d55be7e29bf454e933">(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.nonce='ee180c8bf8ff88d55be7e29bf454e933';d.innerHTML="window.__CF$cv$params={r:'a3c4c0835ae6d133',t:'MTc4OTYxMjg4Nw=='};var a=document.createElement('script');a.nonce='ee180c8bf8ff88d55be7e29bf454e933';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
